@@ -45,7 +45,7 @@ end
 
 get '/users/:user_id' do
  @user = current_user
- @rounds = Rounds.where(user_id: @user.id)
+ @rounds = Round.where(user_id: @user.id)
   erb :'users/show'
 end
 
