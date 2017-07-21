@@ -30,4 +30,4 @@ group :test, :development do
 end
 
 # Adam Gems
-gem "irbtools-more"
+gem 'irbtools'
