@@ -12,7 +12,7 @@ require 'irbtools'
 require 'bcrypt'
 require 'uri'
 require 'pathname'
-
+# test comment
 require 'pg'
 require 'active_record'
 require 'logger'
