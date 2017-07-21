@@ -1,5 +1,8 @@
 <h1> Hello, <%= current_user.name %>!!! </h1>
  <% @rounds.each do |round| %>
+    <% cards = Card.where(deck_id: round.deck.id) %>
+    <% guesses = Guess.where(round_id: round.id) %>
+      <% guesses.each do |guess| %>
 <table style="width: 100%">
 <h2><%= round.deck.title %></h2>
   <tr>
@@ -9,10 +12,11 @@
     <th>Total Guesses</th>
  </tr>
   <tr>
-    <td><%= round.created_at.to_date %><td>
-    <td><%= %></td>
-    <td><%= %></td>
-    <td><%= %></td>
+    <td><%= round.created_at.to_date %></td>
+    <td><%= cards.count %></td>
+    <td><%= guess.total_first_correct %></td>
+    <td><%= guess.total_guesses %></td>
   </tr>
 </table>
+ <% end %>
  <% end %>
