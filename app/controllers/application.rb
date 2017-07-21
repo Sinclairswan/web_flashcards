@@ -1,9 +1,9 @@
 ########### HOME ###########
 #home
-get '/' do
-  # "hi"
-  erb :'home/home'
-end
+# get '/' do
+#   # "hi"
+#   erb :'home/home'
+# end
 
 ########### CARD ###########
 #card_display
