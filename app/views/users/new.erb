@@ -1,0 +1,27 @@
+<div class="sub-section text-center">
+
+  <h2>On the Registration Page...</h2>
+  <h4>Table: users</h4>
+  <h4>Columns: first_name, last_name, email, password</h4>
+
+  <div class="container">
+    <form class="form-inline text-center sub-section-form" action="/user" method="post">
+      <div class="form-group">
+        <input class="shadow" name="user[first_name]" type="text" value="<%#= @user.first_name %>" placeholder="first name" />
+      </div>
+      <div class="form-group">
+        <input class="shadow" name="user[last_name]" type="text" value="<%#= @user.last_name %>" placeholder="last name" />
+      </div>
+      <div class="form-group">
+        <input class="shadow" name="user[email]" type="text" value="<%#= @user.email %>" placeholder="email name" />
+      </div>
+      <div class="form-group">
+        <input class="shadow" name="user[email]" type="password" value="<%#= @user.password %>" placeholder="email name" />
+      </div>
+      <div class="form-group">
+        <input name="commit" type="submit" value="Register" class="btn btn-success">
+      </div>
+    </form>
+  </div>
+
+</div>
