@@ -1,3 +1,5 @@
 class Card < ApplicationRecord
-  # Remember to create a migration!
+  belongs_to :deck
+
+  validates :question, :answers, presence: true
 end
