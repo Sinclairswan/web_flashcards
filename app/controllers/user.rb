@@ -41,5 +41,6 @@ end
 
 get '/users/:user_id' do
   "this will summarize user rounds taken and results"
+  erb :'404'
 end
 
