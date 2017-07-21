@@ -1,5 +1,5 @@
 get '/register' do
- "this page will allow people to register"
+ erb :'/users/register'
 end
 
 post '/register' do
