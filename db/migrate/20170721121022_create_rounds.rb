@@ -9,3 +9,6 @@ class CreateRounds < ActiveRecord::Migration[5.0]
     end
   end
 end
+
+# total_guesses
+# correct guesses

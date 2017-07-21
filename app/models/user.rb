@@ -24,7 +24,7 @@ class User < ApplicationRecord
   end
 
   def self.stat(user_id)
-
+    rounds = self.rounds.pluck
   end
 
 end
