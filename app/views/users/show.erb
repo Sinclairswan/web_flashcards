@@ -4,9 +4,11 @@
 <ul>
 <%@rounds.each do |round|%>
 <li>
-<h3> <%= round.deck_id.name %> <h3>
+<h3> <%= round.deck.name %> <h3>
 <% round.guesses.each do |guess| %>
+<!-- THIS NEEDS TO BE REPLACED WITH HOW WE SUMMARIZE -->
 <p> <%= guess.success %> </p>
+<% end %>
 <% end %>
 </li>
 </ul>
