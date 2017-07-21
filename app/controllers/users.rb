@@ -5,7 +5,8 @@ end
 post '/register' do
   if User.find_by(email: params[:email])
     @errors = "email already registered"
-    erb :'/users/register'
+    # erb :'/users/register'
+    erb :'/'
 
   elsif User.find_by(username: params[:username])
     @errors = "username is already registered"
