@@ -19,7 +19,6 @@ class User < ApplicationRecord
     else
       self.errors[:base] << "Password must be greater than 2 characters."
     end
-    binding.pry
   end
 
  # Authenticate method included in model object for easier authentication
