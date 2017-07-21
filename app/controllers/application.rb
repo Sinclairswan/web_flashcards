@@ -6,18 +6,18 @@
 # end
 
 ########### CARD ###########
-#card_display
-get '/card_display' do
-  # "hi"
-  erb :'cards/card_display'
-end
+# #card_display
+# get '/card_display' do
+#   # "hi"
+#   erb :'cards/card_display'
+# end
 
 ########### STATS ###########
 #stats
-get '/stats' do
-  # "hi"
-  erb :'stats/stats'
-end
+# get '/stats' do
+#   # "hi"
+#   erb :'stats/stats'
+# end
 
 ########### USERS ###########
 #register
@@ -27,7 +27,7 @@ end
 # end
 
 #profile
-get '/profile' do
-  # "hi"
-  erb :'/users/profile'
-end
+# get '/profile' do
+#   # "hi"
+#   erb :'/users/profile'
+# end

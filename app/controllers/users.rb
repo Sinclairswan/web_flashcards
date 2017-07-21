@@ -42,3 +42,13 @@ before '/users/:id/*' do
   # write method
   authenticate!
 end
+
+get '/profile' do
+  erb :'/users/profile'
+end
+
+#stats
+get '/stats' do
+  # "hi"
+  erb :'users/stats'
+end

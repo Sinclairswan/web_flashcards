@@ -23,6 +23,7 @@ require 'erb'
 require 'bcrypt'
 require 'irb'
 require 'irbtools'
+require "will_paginate"
 
 
 # Some helper constants for path-centric logic

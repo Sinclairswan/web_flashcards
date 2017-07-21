@@ -31,3 +31,4 @@ end
 
 # Adam Gems
 gem 'irbtools'
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'
