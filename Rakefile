@@ -133,9 +133,14 @@ namespace :db do
   end
 end
 
-desc 'Start IRB with application environment loaded'
-task "console" do
-  exec "irb -r./config/environment"
+desc 'Start Pry with application environment loaded'
+# task "console" do
+#   exec "irb -r./config/environment"
+# end
+task 'console' do
+  exec 'pry -r./config/environment'
+  ARGV.clear
+  Pry.start
 end
 
 
