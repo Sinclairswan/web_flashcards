@@ -1,11 +1,11 @@
 post '/rounds' do
-  this initializes the objects required to take the quiz
-  redirects to # /round/:round_id/:guess_id
+  "this initializes the objects required to take the quiz
+  redirects to" # /round/:round_id/:guess_id
 end
 
 get '/round/:round_id/:guess_id' do
-  "this finds the guess specific to the round id and displays it for the user to answer"
-  this includes a button that posts the user guess
+  "this finds the guess specific to the round id and displays it for the user to answer
+  this includes a button that posts the user guess"
 end
 
 post '/round/:round_id/:guess_id' do
@@ -22,7 +22,7 @@ post '/round/:round_id/:guess_id' do
 
 get '/round/:round_id' do
   # Create variable equal to results from specific round
-  shows user result from specific round
+  "shows user result from specific round"
   # IF THERES NO SESSION ID IT DESTROYS instance of round
   # User first variable made to show to guest
 end

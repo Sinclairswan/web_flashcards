@@ -1,5 +1,5 @@
 get '/register' do
- this page will allow people to register
+ "this page will allow people to register"
 end
 
 post '/register' do
@@ -7,7 +7,7 @@ post '/register' do
 end
 
 get '/login' do
-  this page will allow people to login
+  "this page will allow people to login"
 end
 
 post '/login' do
@@ -16,10 +16,10 @@ end
 
 get '/logout' do
   # session[:user_id].destroy
-  this will redirect to home with sessions closed
+  "this will redirect to home with sessions closed"
 end
 
 get '/users/:user_id' do
-  this will summarize user rounds taken and results
+  "this will summarize user rounds taken and results"
 end
 
