@@ -1,8 +1,7 @@
 <!-- List all deck options -->
-<ul>
-  <li>
-  <% @decks.each do |deck| %>
-  <% deck.name %>
-  <% end %>
-  </li>
-</ul>
+<h1>Choose your game</h1>
+
+<% @decks.each do |deck| %>
+<div class="deck"><a href="/decks/<%=deck.id%>"><%= deck.name %></a></div>
+<% end %>
+
