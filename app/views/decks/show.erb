@@ -1,3 +1,9 @@
 <!-- Show single deck -->
 <!-- Include sign in option if no session id  to route to users/register-->
 <!-- start quiz button will post to /rounds -->
+<p>Don't forget to login <a href="/login">here</a>!</p>
+<h1><%=@deck.name%></h1>
+<p>Are you ready to play?</p>
+<form action="/rounds" method="post">
+  <input type="submit" value="Play">
+</form>

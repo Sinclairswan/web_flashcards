@@ -23,5 +23,3 @@ CSV.foreach('db/dataset/Jeopardy.csv', headers:true, header_converters: :symbol)
 
 end
 
-
-

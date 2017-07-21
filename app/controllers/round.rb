@@ -1,6 +1,11 @@
 post '/rounds' do
-  "this initializes the objects required to take the quiz
-  redirects to" # /round/:round_id/:guess_id
+  @deck = Deck.find(session[:deck_id])
+  @round = Round.create(deck_id: @deck.id)
+  if session[:user_id]
+    @round.user_id = session[:user_id]
+  end
+  session[:guess_id] = 1
+  redirect "/round/#{@round.id}/#{session[:guess_id]}"
 end
 
 get '/round/:round_id/:guess_id' do
@@ -9,6 +14,7 @@ get '/round/:round_id/:guess_id' do
 end
 
 post '/round/:round_id/:guess_id' do
+  session[:guess_id] += 1
   # THE BIG CHECKER
   # Add on current guess counter
   # Check guess success boolean/update

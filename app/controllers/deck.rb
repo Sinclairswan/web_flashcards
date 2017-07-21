@@ -1,11 +1,12 @@
 get '/decks' do
-  "this will show all available decks to take a round of"
-  erb :'/decks/index'
+  @decks = Deck.all
+  erb :'decks/index'
 end
 
 get '/decks/:deck_id' do
-  "this is where you look at a specific deck and decide to take a round
-  will have button to post quiz"
+  @deck = Deck.find(params[:deck_id])
+  session[:deck_id] = @deck.id
+  erb :'decks/show'
 end
 
 
