@@ -1,4 +1,12 @@
 <h1>Create an account</h1>
+
+<% if @errors %>
+<% @errors.each do |error|%>
+<li> <%= error %> </li>
+<% end %>
+<% end %>
+<br>
+
 <form method="post" action="/register">
    <label>First Name:</label>
    <input id="first-name-input" name="user[first_name]" type="text">
