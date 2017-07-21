@@ -1,0 +1,27 @@
+<div class="sub-section text-center">
+  <h2>On the Home Page...</h2>
+  <h3>Flashcards</h3>
+
+  <h3><%#= @deck.name %></h3>
+
+
+  <table class="table table-bordered table-hover text-center sub-section-table">
+  <tr>
+    <th>ID</th>
+    <th>Flashcard Decks</th>
+    <th>Status</th>
+  </tr>
+  <% @decks.each do |deck| %>
+  <tr>
+    <td>ID<%= deck.id %></td>
+    <td><%= deck.name %></td>
+    <td><%#= deck.status %><span class="glyphicon glyphicon-play-circle"></span></td>
+  </tr>
+  <% end %>
+</table>
+
+
+
+
+
+</div>
