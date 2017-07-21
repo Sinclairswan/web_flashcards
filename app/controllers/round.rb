@@ -1,9 +1,12 @@
 post '/rounds' do
   @deck = Deck.find(session[:deck_id])
   @round = Round.create(deck_id: @deck.id)
+  binding.pry
   if session[:user_id]
+    binding.pry
     @round.user_id = session[:user_id]
   end
+  binding.pry
   session[:guess_id] = 1
   redirect "/round/#{@round.id}/#{session[:guess_id]}"
 end
