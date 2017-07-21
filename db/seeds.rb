@@ -1,28 +1,25 @@
-# user1 = User.create(
-#   first_name: "Joe",
-#   last_name: "Shmoe",
-#   email: "joe.shmoe@example.com",
-#   password: "joe"
-#   )
+require 'csv'
 
-# user2 = User.create(
-#   first_name: "Melinda",
-#   last_name: "Banks",
-#   email: "melinda.banks@example.com",
-#   password: "melinda"
-#   )
+user1 = User.create(
+  first_name: "Joe",
+  last_name: "Shmoe",
+  email: "joe.shmoe@example.com",
+  password: "joe"
+  )
 
-cardset = []
-cardset << Card.create(question: "What is Austin?", answer: "city")
-cardset << Card.create(question: "What is Texas?", answer: "state")
-cardset << Card.create(question: "What is the U.S.?", answer: "country")
-cardset << Card.create(question: "What is North America?", answer: "continent")
+user2 = User.create(
+  first_name: "Melinda",
+  last_name: "Banks",
+  email: "melinda.banks@example.com",
+  password: "melinda"
+  )
 
-deck1 = Deck.create(name: "Birds")
-deck2 = Deck.create(name: "Cats")
-deck3 = Deck.create(name: "Dogs")
-deck4 = Deck.create(name: "Coffee")
-deck5 = Deck.create(name: "Computers")
+card_obj = []
 
-deck1.cards << cardset
+CSV.foreach('db/dataset/Jeopardy.csv', headers:true, header_converters: :symbol) do |row|
+
+  deck_obj = Deck.find_or_create_by(name: row[:category])
+  card_obj = Card.create(question: row[:question], answer: row[:answer], deck_id: deck_obj.id)
+
+end
 
