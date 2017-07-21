@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :rounds
-  validates :first_name, :email, :password, presence: true
+  validates :first_name, :email, presence: true
+  validates :encrypted_password, presence: true
 
   include BCrypt
 
@@ -13,9 +14,12 @@ class User < ApplicationRecord
  end
 
  def password=(new_password)
-   @password = Password.create(new_password)
-   self.encrypted_password = @password
- end
+    if new_password.length > 2
+      self.encrypted_password = Password.create(new_password)
+    else
+      self.errors[:base] << "Password must be greater than 2 characters."
+    end
+  end
 
  # Authenticate method included in model object for easier authentication
  def authenticate(email, password)
