@@ -1,0 +1,17 @@
+<!-- THIS SHOW IS FOR AN INDIVIDUAL QUESTION -->
+<!-- This page will check guess_id to see if it is already successful. -->
+<!-- if already answered, will move to guess_id +1 -->
+<!-- if not answered, will show question -->
+
+<% guess = @guess_array[session[:counter]] %>
+<%= guess %>
+
+
+<form id="card_display" action="/round/<%= @round.id %>/guess" method="post">
+  <% card = Card.find(guess.card_id) %>
+  <p> <%= guess.card_id %> </p>
+    <p> <%= session[:guess_id] %> </p>
+    <p> <%= card.question %> </p>
+  <input type="text" name="answer" placeholder="Enter your guess...">
+  <input type="submit" value="Check My Guess">
+</form>

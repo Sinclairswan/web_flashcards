@@ -1,0 +1,19 @@
+<% if @successful %>
+<h1><%= @successful %></h1>
+<% end %>
+
+<% if @error %>
+<h1><%= @error %></h1>
+<% end %>
+
+
+<h1>Login</h1>
+<form method="post" action="/login">
+   <label for="email-input">Email:</label>
+   <input id="email-input" name="email" type="text">
+ <br>
+   <label for="password-input">Password:</label>
+   <input id="password-input" name="password" type="password">
+
+   <input type="submit" value="login" tabindex="3">
+ </form>
