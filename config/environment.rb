@@ -21,6 +21,7 @@ require "sinatra/reloader" if development?
 
 require 'erb'
 require 'bcrypt'
+require 'irb'
 require 'irbtools'
 
 

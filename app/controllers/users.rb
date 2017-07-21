@@ -2,36 +2,18 @@ get '/new' do
   erb :'/users/new'
 end
 
-post '/new' do
-  if User.find_by(email: params[:email])
-    @errors = "email already registered"
-    erb :'/new'
+post '/users' do
+    user = User.new(params[:user])
+    if user.save
+      session[:user_id] = user.id
+      redirect '/'
+    else
+    @errors = user.errors.full_messages
 
-  elsif User.find_by(username: params[:username])
-    @errors = "username is already registered"
-    erb :'/new'
-
-  elsif (params[:password] == "")
-    @errors = "must enter a password"
-    erb :'/new'
-
-  elsif (params[:email] == "")
-    @errors = "must enter an email"
-    erb :'/new'
-
-  elsif (params[:username] == "")
-    @errors = "must enter a username"
-    erb :'/new'
-
-  else
-    password = BCrypt::Password.create(params[:password])
-    user = User.new(username: params[:username], email: params[:email])
-    user.password = params[:password]
-    user.save
-    session[:user_id] = user.id
-    redirect '/'
-  end
+      erb :'/users/new'
+   end
 end
+
 
 get '/login' do
   erb :'users/login'
