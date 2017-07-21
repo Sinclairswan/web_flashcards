@@ -1,0 +1,25 @@
+<div class="sub-section text-center">
+  <h2>On the Card Display Page...</h2>
+
+  <div class="container">
+
+    <h3>Nighthawk Trivia</h3>
+    <h3><%#= @deck.deck_name %></h3>
+
+    <h4>Do common nighthalks make nests (yes / no)</h4>
+    <h4><%#= @card.question %></h4>
+
+    <form class="form-inline text-center sub-section-form" action="/card" method="post">
+
+      <div class="form-group">
+        <input class="w-med shadow" name="card[input]" type="text" value="<%#= @card.input %>" placeholder="Enter your guess here." />
+      </div>
+
+      <div class="form-group">
+        <input name="commit" type="submit" value="Submit" class="btn btn-primary">
+      </div>
+
+    </form>
+  </div>
+
+</div>
