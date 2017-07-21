@@ -26,10 +26,19 @@ post '/login' do
    user = User.find_by(email: params[:email])
   if user && user.authenticate(params[:password])
     session[:user_id] = user.id
-    redirect '/'
+    redirect '/profile'
   else
     @error = "Invalid Password, Try Again."
-    erb :'/entries/login'
+    erb :'/login'
+  end
+end
+
+get '/profile' do
+  if current_user
+    @rounds = Round.where(user_id: current_user.id)
+    erb :profile
+  else
+    redirect '/login'
   end
 end
 

@@ -11,12 +11,13 @@
 </head>
 <body>
   <header role="banner" class="mar-t-5 pad-t-2 pad-b-4 pad-s-1 wrap-float bg-white">
-    <div class="max-w-700 center wrap-float">
+  <div class="max-w-700 center wrap-float">
       <nav class="clearfix mar-b-1">
-        <ul class="no-bullets no-margin no-padding right">
+       <ul class="no-bullets no-margin no-padding right">
+        <h1 style="color: pink">Flashcard Club!</h1>
           <% if current_user %>
-          <li class="pipe-separate t-light-green left" style="color: green"> <%= current_user.name %> </li>
-          <li class="pipe-separate t-light-green left"><a href="/logout">Logout</a></li>
+          <li class="pipe-separate t-light-green left" style="color: green"> <%= current_user.name.downcase %> </li>
+          <li class="pipe-separate t-light-green left"><a href="/logout">logout</a></li>
           <li class="pipe-separate t-light-green left"><a href="/">home</a></li>
           <% else %>
           <li class="pipe-separate t-light-green left"><a href="/">home</a></li>

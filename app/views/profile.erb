@@ -1,0 +1,18 @@
+<h1> Hello, <%= current_user.name %>!!! </h1>
+ <% @rounds.each do |round| %>
+<table style="width: 100%">
+<h2><%= round.deck.title %></h2>
+  <tr>
+    <th>Date</th>
+    <th>Cards in Deck</th>
+    <th>First Guess Correct</th>
+    <th>Total Guesses</th>
+ </tr>
+  <tr>
+    <td><%= round.created_at.to_date %><td>
+    <td><%= %></td>
+    <td><%= %></td>
+    <td><%= %></td>
+  </tr>
+</table>
+ <% end %>

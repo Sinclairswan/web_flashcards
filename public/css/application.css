@@ -288,3 +288,6 @@ input[type=text], input[type=password], textarea {
   border-radius: 50%;
 }
 
+table, th, td {
+  border: 2px solid black;
+}
