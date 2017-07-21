@@ -1,1 +1,8 @@
 <!-- List all deck options -->
+<ul>
+  <li>
+  <% @decks.each do |deck| %>
+  <% deck.name %>
+  <% end %>
+  </li>
+</ul>
