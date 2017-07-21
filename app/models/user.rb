@@ -2,19 +2,19 @@ class User < ApplicationRecord
   has_many :rounds
   validates :first_name, :email, :password, presence: true
 
- include BCrypt
+  include BCrypt
 
- def full_name
+  def full_name
    "#{self.first_name} #{self.last_name}"
  end
 
  def password
-   @password ||= Password.new(password_hash)
+  @password ||= Password.new(encrypted_password)
  end
 
  def password=(new_password)
    @password = Password.create(new_password)
-   self.password_hash = @password
+   self.encrypted_password = @password
  end
 
  # Authenticate method included in model object for easier authentication
@@ -24,5 +24,5 @@ class User < ApplicationRecord
    else
      puts 'wrong password'
    end
-
+ end
 end
