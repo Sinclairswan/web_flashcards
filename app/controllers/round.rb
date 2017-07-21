@@ -8,20 +8,31 @@ post '/rounds' do
     @round.user_id = current_user.id
   end
   @round.save
-  session[:guess_id] = 1
+  session[:counter] = 1
   redirect "/round/#{@round.id}/guess"
 end
 
 get '/round/:round_id/guess' do
   @round = Round.find(params[:round_id])
+  @guess_array = @round.guesses
   erb :'rounds/show'
 end
 
 post '/round/:round_id/guess' do
   @round = Round.find(params[:round_id])
-  if session[:guess_id] >= @round.guesses.count
-    session[:guess_id] += 1
+  session[:counter] += 1
+  if session[:counter] > @round.guesses.count
+    session[:counter] = 1
+    guesses = @round.guesses
+    if guesses.exists?(success: false)
+      redirect "/round/#{@round.id}/guess"
+    else
+      redirect "/round/#{@round.id}"
+    end
+  else
+    redirect "/round/#{@round.id}/guess"
   end
+
   # THE BIG CHECKER
   # Add on current guess counter
   # Check guess success boolean/update
@@ -29,8 +40,7 @@ post '/round/:round_id/guess' do
   # Checks if all guesses are successful. if so...
   # redirects to '/round/:round_id'
   # else
-  # redirects to '/round/:round_id/guess' WE'LL FIGURE THIS OUT I KNOW IT
-
+  redirects to "/round/#{@round.id}/guess"
   end
 
 get '/round/:round_id' do
