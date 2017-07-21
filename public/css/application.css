@@ -19,12 +19,12 @@ body {
 }
 
 a {
-  color: #32bb7d;
+  color: #504BA5;
   text-decoration: none;
 }
 
   a:hover {
-    color: #6ec7a5;
+    color: #ee4a25;
     text-decoration: underline;
   }
 
@@ -57,7 +57,7 @@ input[type=text], input[type=password], textarea {
 
 /* formatting */
 .bg-dk-green {
-  background-color: #05724f;
+  background-color: #f30092;
 }
 
 .bg-white {
@@ -274,7 +274,6 @@ input[type=text], input[type=password], textarea {
 }
 
 .logo-container {
-  border: 5px solid #05724f;
   color: #05724f;
   width: 305px;
   height: 305px;
@@ -285,6 +284,7 @@ input[type=text], input[type=password], textarea {
 }
 
 .logo {
-  width:160px;
+  width: 280px;
+  border-radius: 50%;
 }
 
