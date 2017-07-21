@@ -1,5 +1,6 @@
 get '/decks' do
   "this will show all available decks to take a round of"
+  erb :'/decks/index'
 end
 
 get '/decks/:deck_id' do
