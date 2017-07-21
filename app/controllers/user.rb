@@ -3,20 +3,40 @@ get '/register' do
 end
 
 post '/register' do
-  # this will redirect to /login after adding a user
+  @user = User.create(params[:user])
+ if @user.valid?
+   redirect '/login?s=1'
+ elsif @user.valid? == false || params[:user][:password].empty?
+ @errors = @user.errors.full_messages
+  erb :'users/new'
+ end
 end
 
 get '/login' do
-  "this page will allow people to login"
+  if params[:s] == "1"
+     @successful = "Account created! Go ahead and login:"
+   end
+   erb :'users/login'
 end
 
 post '/login' do
-  # This will redirect to "/" with a session[:user_id] = user_id
+  @user = User.find_by(email: params[:email])
+   if @user.nil?
+     status 422
+     @error
+   elsif @user.authenticate(params[:email], params[:password])
+     session[:user_id] = @user.id
+     redirect '/decks'
+   else
+     status 422
+     @error
+   end
+   redirect to '/login?login=failed'
 end
 
 get '/logout' do
-  # session[:user_id].destroy
-  "this will redirect to home with sessions closed"
+  session.delete(:user_id)
+  redirect '/decks'
 end
 
 get '/users/:user_id' do
