@@ -1,6 +1,6 @@
 post '/rounds' do
   @deck = Deck.find(session[:deck_id])
-  @round = Round.create(deck_id: @deck.id)
+  @round = Round.new(deck_id: @deck.id)
   if session[:user_id]
     @round.user_id = session[:user_id]
   end
