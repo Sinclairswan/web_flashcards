@@ -1,11 +1,12 @@
 class CreateDecks < ActiveRecord::Migration[5.0]
- 
-  def change
 
- 	create table :deck do |t|
+	def change
 
- 		t. string :deck_title, null :false 
+		create table :deck do |t|
 
- 		t.timestamps 
-  end
-end
+			t. string :deck_title, null :false 
+
+			t.timestamps 
+		end
+	end
+end 
