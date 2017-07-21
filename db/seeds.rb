@@ -1,5 +1,4 @@
 require 'csv'
-require 'activerecord-import'
 
 user1 = User.create(
   first_name: "Joe",
@@ -20,10 +19,9 @@ card_obj = []
 CSV.foreach('db/dataset/Jeopardy.csv', headers:true, header_converters: :symbol) do |row|
 
   deck_obj = Deck.find_or_create_by(name: row[:category])
-  card_obj << Card.new(question: row[:question], answer: row[:answer], deck_id: deck_obj.id)
+  card_obj = Card.create(question: row[:question], answer: row[:answer], deck_id: deck_obj.id)
 
 end
 
-Card.import(card_obj)
 
 
