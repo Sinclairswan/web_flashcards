@@ -1,20 +1,27 @@
 post '/rounds' do
   @deck = Deck.find(session[:deck_id])
-  @round = Round.create(deck_id: @deck.id)
-  if session[:user_id]
-    @round.user_id = session[:user_id]
+  @round = Round.new(deck_id: @deck.id)
+  @deck.cards.each do |card|
+    @round.guesses << Guess.create(card_id: card.id)
   end
+  if current_user
+    @round.user_id = current_user.id
+  end
+  @round.save
   session[:guess_id] = 1
-  redirect "/round/#{@round.id}/#{session[:guess_id]}"
+  redirect "/round/#{@round.id}/guess"
 end
 
-get '/round/:round_id/:guess_id' do
-  "this finds the guess specific to the round id and displays it for the user to answer
-  this includes a button that posts the user guess"
+get '/round/:round_id/guess' do
+  @round = Round.find(params[:round_id])
+  erb :'rounds/show'
 end
 
-post '/round/:round_id/:guess_id' do
-  session[:guess_id] += 1
+post '/round/:round_id/guess' do
+  @round = Round.find(params[:round_id])
+  if session[:guess_id] >= @round.guesses.count
+    session[:guess_id] += 1
+  end
   # THE BIG CHECKER
   # Add on current guess counter
   # Check guess success boolean/update
@@ -22,7 +29,7 @@ post '/round/:round_id/:guess_id' do
   # Checks if all guesses are successful. if so...
   # redirects to '/round/:round_id'
   # else
-  # redirects to '/round/:round_id/:next_guess_id' WE'LL FIGURE THIS OUT I KNOW IT
+  # redirects to '/round/:round_id/guess' WE'LL FIGURE THIS OUT I KNOW IT
 
   end
 

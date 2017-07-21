@@ -1,0 +1,14 @@
+
+<h1><%="#{@user.full_name}'s"%> Quiz Results:</h1>
+
+<ul>
+<%@rounds.each do |round|%>
+<li>
+<h3> <%= round.deck_id.name %> <h3>
+<% round.guesses.each do |guess| %>
+<p> <%= guess.success %> </p>
+<% end %>
+</li>
+</ul>
+
+
