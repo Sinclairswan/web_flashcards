@@ -1,22 +1,24 @@
 <div class="sub-section text-center">
 
+ <% if @errors %>
+    <p>Something went wrong...</p>
+     <p style="color: black"><%= @errors %></p>
+  <% end %>
+
   <h2>On the Registration Page...</h2>
   <h4>Table: users</h4>
-  <h4>Columns: first_name, last_name, email, password</h4>
+  <h4>Columns: username, email, password</h4>
 
   <div class="container">
     <form class="form-inline text-center sub-section-form" action="/user" method="post">
       <div class="form-group">
-        <input class="shadow" name="user[first_name]" type="text" value="<%#= @user.first_name %>" placeholder="first name" />
+        <input class="shadow" name="user[username]" type="text" placeholder="first name" />
       </div>
       <div class="form-group">
-        <input class="shadow" name="user[last_name]" type="text" value="<%#= @user.last_name %>" placeholder="last name" />
+        <input class="shadow" name="user[email]" type="text"  placeholder="email name" />
       </div>
       <div class="form-group">
-        <input class="shadow" name="user[email]" type="text" value="<%#= @user.email %>" placeholder="email name" />
-      </div>
-      <div class="form-group">
-        <input class="shadow" name="user[email]" type="password" value="<%#= @user.password %>" placeholder="email name" />
+        <input class="shadow" name="user[email]" type="password" placeholder="email name" />
       </div>
       <div class="form-group">
         <input name="commit" type="submit" value="Register" class="btn btn-success">

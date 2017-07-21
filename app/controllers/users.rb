@@ -1,28 +1,28 @@
-get '/register' do
-  erb :'users/register'
+get '/new' do
+  erb :'users/new'
 end
 
-post '/register' do
+post '/new' do
   if User.find_by(email: params[:email])
     @errors = "email already registered"
-    # erb :'/users/register'
+    # erb :'/users/new'
     erb :'/'
 
   elsif User.find_by(username: params[:username])
     @errors = "username is already registered"
-    erb :'/register'
+    erb :'/new'
 
   elsif (params[:password] == "")
     @errors = "must enter a password"
-    erb :'/register'
+    erb :'/new'
 
   elsif (params[:email] == "")
     @errors = "must enter an email"
-    erb :'/register'
+    erb :'/new'
 
   elsif (params[:username] == "")
     @errors = "must enter a username"
-    erb :'/register'
+    erb :'/new'
 
   else
     password = BCrypt::Password.create(params[:password])
