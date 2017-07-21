@@ -1,12 +1,11 @@
 get '/new' do
-  erb :'users/new'
+  erb :'/users/new'
 end
 
 post '/new' do
   if User.find_by(email: params[:email])
     @errors = "email already registered"
-    # erb :'/users/new'
-    erb :'/'
+    erb :'/new'
 
   elsif User.find_by(username: params[:username])
     @errors = "username is already registered"

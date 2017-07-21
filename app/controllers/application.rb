@@ -21,10 +21,10 @@ end
 
 ########### USERS ###########
 #register
-get '/new' do
-  # "hi"
-  erb :'/users/new'
-end
+# get '/new' do
+#   # "hi"
+#   erb :'/users/new'
+# end
 
 #profile
 get '/profile' do
