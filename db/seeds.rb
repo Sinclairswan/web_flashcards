@@ -14,3 +14,5 @@ cards_for_deck_1 = [
 ]
 
 Card.create(cards_for_deck_1)
+
+User.create(name: "Lisa", email: "lisa@lisafrank.com", password: "unicorn")
