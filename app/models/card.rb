@@ -3,3 +3,7 @@ class Card < ApplicationRecord
 
   validates :question, :answer, presence: true
 end
+
+# def position
+#  position = 0
+# end

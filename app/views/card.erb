@@ -1,0 +1,48 @@
+<!-- need to access deck title in some way. -->
+
+
+<h2><%= @card.question %></h2>
+
+<% if @correct == false %>
+<form method="post" action="/card/<%=@card.deck_id%>/<%=@card.id%>">
+<label for= "answer">Submit your answer:</label>
+<br>
+<br>
+<input type="text" name="user_answer">
+<br>
+<br>
+<input type="submit" name="submit" value="Submit Answer">
+<input type="submit" name="give_up" value="I give up!">
+</form>
+
+<% else %>
+<form method="post" action="/card/<%=@card.deck_id%>/<%=@card.id + 1%>">
+<label for= "answer">Submit your answer:</label>
+<br>
+<br>
+<input type="text" name="user_answer">
+<br>
+<br>
+<input type="submit" name="submit" value="Submit Answer">
+<input type="submit" name="give_up" value="I give up!">
+</form>
+
+
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+<!-- print card question for each card in the deck  -->
+<!-- #form with space to answer and two buttons.  give up button and a submit button.. both will take @card.id for params purposes
+#if give up, @card.id + 1 = card.id && we will add guess to wrong guess array
+... if submit and correct we will add @card.id + 1 = card.id && add one to total first correct array
+if submit and incorrect, we will add guess to wrong guess array and card.id stays the same. -->
+
