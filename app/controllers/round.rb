@@ -1,8 +1,9 @@
 post '/rounds' do
   @deck = Deck.find(session[:deck_id])
   @round = Round.new(deck_id: @deck.id)
+  @round.save
   @deck.cards.each do |card|
-    @round.guesses << Guess.create(card_id: card.id)
+    Guess.create(card_id: card.id, round_id: @round.id)
   end
   if current_user
     @round.user_id = current_user.id
