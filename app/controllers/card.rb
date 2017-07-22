@@ -1,11 +1,8 @@
 get '/card/:deck_id' do
 if current_user
-  @total_correct = []
-  @total_wrong = []
-  @cards = Card.where(deck_id: params[:deck_id])
+  @deck= Card.where(deck_id: params[:deck_id])
   @card = Card.where(deck_id: params[:deck_id]).first
-  round = Round.create(user_id: @user.id, deck_id: params[:deck_id])
-  Guess.create(round_id: round.id, total_first_correct: @total_correct.length, total_guesses: (@total_correct + @total_wrong).length )
+  @round = Round.create(user_id: @user.id, deck_id: params[:deck_id])
   erb :'/card'
 else
   erb :'/login'
@@ -14,23 +11,33 @@ end
 
 post '/card/:deck_id/:card_id' do
 
-  @cards = Card.where(deck_id: params[:deck_id])
-  @card = Card.find_by(id: params[:card_id])
+  # @total_correct = []
+  # @total_wrong = []
 
+  # Guess.create(round_id: @round.id, total_first_correct: @total_correct.length, total_guesses: (@total_correct + @total_wrong).length )
+
+  @round = Round.last
+  @deck = Card.where(deck_id: params[:deck_id])
+  @card = Card.find_by(id: params[:card_id])
+  # @card.counter
   @correct = nil
 
   @user_answer = params[:user_answer]
 
   if @user_answer == @card.answer
     @correct = true
-    # binding.pry
+    erb :'/stats' if @round.game_finished(@card, @deck)
     erb :'/card'
+
   elsif @user_answer != @card.answer
     @correct = false
+    erb :'/stats' if @round.game_finished(@card, @deck)
     erb :'/card'
   else @user_answer = nil
     @correct = true
-    # erb :'/card'
+    erb :'/stats' if @round.game_finished(@card, @deck)
+    erb :'/card'
+
   end
 end
 
