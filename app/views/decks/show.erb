@@ -1,7 +1,13 @@
 <div class="container">
 <h1><%= @deck.name %></h1>
-<% @deck.cards.each do |card|%>
-
+<!-- <% counter = 0 %> -->
+<%card = @ordered_cards[0]%>
 <p><%= card.question %></p>
-<% end %>
+<br>
+<form action='/deck/:id' method="post">
+  <input type="text" name="guess" placeholder="What's your answer?">
+  <input type="submit" value="Submit">
+
+</form>
+
 </div>
