@@ -1,0 +1,17 @@
+<h1>Welcome!</h1>
+<% if @error %>
+  <% @error.each do |m| %>
+  <p style="color: black"><%= m %></p>
+<% end %>
+<% end %>
+  <p>Register:</p>
+  <form id="login" action="/register" method="post">
+    Name: <br>
+   <input type="text" name="user[name]">
+    <br><br>Email:<br>
+    <input type="text" name="user[email]">
+    <br><br>Password:<br>
+    <input type="password" name="user[password]">
+    <br><br>
+    <input style="color: blue" type="submit" value="Register">
+</form>
