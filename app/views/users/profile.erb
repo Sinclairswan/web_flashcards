@@ -11,34 +11,15 @@
       <th>Cards in Deck</th>
       <th>First Guess Correct</th>
       <th>Total Guesses</th>
-      <th>Details</th>
     </tr>
+    <% @rounds.each do |round| %>
     <tr>
-      <td>Rocket Scientists<%#= @round.name %></td>
-      <td>September 26, 2015<%#= @round.updated_at %></td>
-      <td>37<%#= @round.card_count %></td>
-      <td>15<%#= @round.correct_count %></td>
-      <td>87<%#= @round.total_guesses %></td>
-      <td>View<%#= @round.??/// should be link to round show page. %></td>
-    </tr>
-
-    <!-- ###### REMOVE BELOW--FOR TESTING ONLY ###### -->
-    <tr>
-      <td>Otter Facts</td>
-      <td>October 4, 2015</td>
-      <td>37</td>
-      <td>15</td>
-      <td>87</td>
-      <td>View</td>
-    </tr>
-    <tr>
-      <td>Otter Facts</td>
-      <td>November 1, 2016</td>
-      <td>37</td>
-      <td>20</td>
-      <td>44</td>
-      <td>View</td>
+      <td><%= round.deck.name %></td>
+      <td><%= round.updated_at %></td>
+      <td><%= Card.where(deck_id: round.deck_id).count %></td>
+      <td><%= round.result %></td>
+      <td><%= round.total_result %></td>
+       <% end %>
     </tr>
   </table>
-
 </div>

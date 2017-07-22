@@ -44,7 +44,12 @@ before '/users/:id/*' do
 end
 
 get '/profile' do
-  erb :'/users/profile'
+  if current_user
+    user = User.find(current_user.id)
+    @rounds = Round.where(user_id: user)
+
+    erb :'/users/profile'
+  end
 end
 
 #stats
