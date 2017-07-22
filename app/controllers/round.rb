@@ -19,30 +19,32 @@ get '/round/:round_id/guess' do
 end
 
 # Putting loop problem from erb here so we can figure out what to do. maybe include this in post???
-# <!-- <% until guess.success == false %>
-# <% session[:counter] += 1 %>
-
-# <% end %>
-# <% guess = @guess_array[session[:counter]] %> -->
-
+#
+# @guess_array.find(session).card
 post '/round/:round_id/guess' do
   @round = Round.find(params[:round_id])
   # Strict reorder
   @guess_array = @round.guesses.order(:id)
-  @card = Card.find(@guess_array[session[:counter]].card_id)
+
+  # @card = @guess_array.find(@guess_array[session[:counter]]).card
+  @card = @guess_array.find([session[:counter]]).first.card
+  binding.pry
   if params[:answer] == @card.answer
-    @guess_array[session[:counter]].success = true
-    @guess_array[session[:counter]].save
+    binding.pry
+    @guess_array.find([session[:counter]]).first.success = true
+    @guess_array.find([session[:counter]]).first.save
+    binding.pry
     # Strict Reorder
     @guess_array = @guess_array.order(:id)
+    # @guess_array = @guess_array - @guess_array[session[:counter]]
   end
-session[:counter] += 1
-if @guess_array.exists?(success: false)
-  session[:counter] = 0 if session[:counter] >= @round.guesses.count
-  redirect "/round/#{@round.id}/guess"
-else
-  redirect "/round/#{@round.id}"
-end
+  session[:counter] += 1
+  if @guess_array.exists?(success: false)
+    session[:counter] = 0 if session[:counter] >= @round.guesses.count
+    redirect "/round/#{@round.id}/guess"
+  else
+    redirect "/round/#{@round.id}"
+  end
 end
 
 
@@ -56,7 +58,7 @@ end
 
 get '/round/:round_id' do
   # Create variable equal to results from specific round
-  'shows user result from specific round'
+  erb :'/rounds/summary'
   # IF THERES NO SESSION ID IT DESTROYS instance of round
   # User first variable made to show to guest
 end

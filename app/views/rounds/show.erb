@@ -4,6 +4,12 @@
 <!-- if not answered, will show question -->
 
 <% guess = @guess_array.order(:id)[session[:counter]] %>
+ <% until guess.success == false  || session[:counter] == @guess_array.length %>
+
+<% guess =  @guess_array.order(:success).where(success: false).sample %>
+<% session[:counter] = guess.id %>
+<%binding.pry%>
+<% end %>
 
 <form id="card_display" action="/round/<%= @round.id %>/guess" method="post">
   <%= guess.card.question %>
