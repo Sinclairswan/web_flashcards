@@ -1,2 +1,4 @@
 <!-- Results page -->
-you fucked up here and here and here
+<%= @round = Round.find_by(id: params[:round_id]) %>
+<h3><%= @round.deck.name %></h3>
+<p>You've completed a round of <%= @round.deck.name %>! You answered <%= @round.first_try_guesses %>/<%= @round.deck.cards.length %> correctly on the first try. You submitted <%= @round.total_guesses %> total guesses before each card was answered correctly. Bravo!

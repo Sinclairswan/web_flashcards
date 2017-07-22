@@ -1,16 +1,11 @@
 
 <h1><%="#{@user.full_name}'s"%> Quiz Results:</h1>
 
-<ul>
+<ul style="list-style: none">
 <%@rounds.each do |round|%>
-<li>
 <h3> <%= round.deck.name %> <h3>
-<% round.guesses.each do |guess| %>
-<!-- THIS NEEDS TO BE REPLACED WITH HOW WE SUMMARIZE -->
-<p> <%= guess.success %> </p>
+<li> You answered <%= round.first_try_guesses %>/<%= round.deck.cards.length %> correctly on the first try. You submitted <%= round.total_guesses %> total guesses before each card was answered correctly.</li>
 <% end %>
-<% end %>
-</li>
 </ul>
 
 
