@@ -25,8 +25,6 @@ content_for_deck_2 = {
 raccoons = Deck.create(content_for_deck_2)
 
 
-
-
 card_1_for_deck_2 = {
   deck_id: 2,
   question: "What is a male raccoon called?",
