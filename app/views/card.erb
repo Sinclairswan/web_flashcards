@@ -7,10 +7,29 @@
 #if give up, @card.id + 1 = card.id && we will add guess to wrong guess array
 ... if submit and correct we will add @card.id + 1 = card.id && add one to total first correct array
 if submit and incorrect, we will add guess to wrong guess array and card.id stays the same. -->
-<form method="post" action="/card/deck_id">
-
+<!-- if user_answer is correct -->
+<form method="post" action="/card/<%=@card.deck_id%>/<%=@card.id + 1%>">
+<label for= "answer">Submit your answer:</label>
+<br>
+<br>
+<input type="text" name="user_answer">
+<br>
+<br>
+<input type="submit" name="submit" value="Submit Answer">
+<input type="submit" name="give_up" value="I give up!">
 </form>
-
+<!-- #else card id to stay the same.
+else
+<form method="post" action="/card/<%=@card.deck_id%>/<%=@card.id%>">
+<label for= "answer">Submit your answer:</label>
+<br>
+<br>
+<input type="text" name="user_answer">
+<br>
+<br>
+<input type="submit" name="submit" value="Submit Answer">
+<input type="submit" name="give_up" value="I give up!">
+</form> -->
 <!-- at /card/deck_id/card_id
 p card.question(deckid, cardid)
 

@@ -1,0 +1,15 @@
+<h2><%= @current_card.question %></h2>
+
+
+<form method="post" action="/card/<%=@current_card.deck_id%>/<%=@current_card.id%>">
+<label for= "answer">Submit your answer:</label>
+<br>
+<br>
+<input type="text" name="user_answer">
+<br>
+<br>
+<input type="submit" name="submit" value="Submit Answer">
+<input type="submit" name="give_up" value="I give up!">
+<!-- #can we put counter inside input? -->
+
+</form>
