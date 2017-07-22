@@ -27,16 +27,16 @@ post '/card/:deck_id/:card_id' do
 
   if @user_answer == @card.answer
     @correct = true
-    erb :'/stats' if @round.game_finished(@card, @deck)
+    redirect '/stats' if @round.game_finished(@card, @deck)
     erb :'/card'
   elsif @user_answer != @card.answer
     @correct = false
-    erb :'/stats' if @round.game_finished(@card, @deck)
+    redirect '/stats' if @round.game_finished(@card, @deck)
     @errors = "Oh butterflies! Try again!"
     erb :'/card'
   else @user_answer = nil
     @correct = true
-    erb :'/stats' if @round.game_finished(@card, @deck)
+    redirect '/stats' if @round.game_finished(@card, @deck)
     erb :'/card'
   end
 

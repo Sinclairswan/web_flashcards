@@ -58,3 +58,12 @@ get '/logout' do
   session.delete(:user_id)
   redirect '/'
 end
+
+
+
+
+# logic to display stats
+#@stat_round.deck.title %>
+#@guess[0].total_first_correct %>
+#@stat_round.deck.cards.count %>
+  #@guess[0].total_guesses %>

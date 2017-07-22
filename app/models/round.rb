@@ -21,7 +21,8 @@ def counter
 end
 
 def game_finished(card, deck)
-  (card.id) == deck.count
+ (card.id) == deck.count
+  # deckid.cards.count == deck.count
 end
 
 end
