@@ -23,10 +23,13 @@ post '/card/:deck_id/:card_id' do
   #cards.each do |@card|
   total_correct = []
   wrong_guess = []
+  @correct = true
+
 
   @user_answer = params[:user_answer]
   # binding.pry
   if @user_answer == @card.answer
+    @correct = true
     total_correct << 1
     # position += 1
     # next_card = @cards[position]
@@ -37,12 +40,14 @@ post '/card/:deck_id/:card_id' do
     erb :'/card'
   elsif @user_answer != @card.answer
     wrong_guess << 1
+    @correct = false
     # params[:card_id]
 
     erb :'/card'
   else @user_answer = nil
-    next_card = @cards[position]
-    next_card.id = params[:card_id]
+    # next_card = @cards[position]
+    # next_card.id = params[:card_id]
+    @correct = true
     erb :'/card'
   end
   # erb :'/card'
