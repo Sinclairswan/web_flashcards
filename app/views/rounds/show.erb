@@ -4,10 +4,7 @@
 <!-- if not answered, will show question -->
 
 <% guess = @guess_array[session[:counter]] %>
-<% until guess.success == false %>
-  <% session[:counter] += 1 %>
-<% end %>
-<% guess = @guess_array[session[:counter]] %>
+
 <form id="card_display" action="/round/<%= @round.id %>/guess" method="post">
   <%= guess.card.question %>
   <input type="text" name="answer" placeholder="Enter your guess...">

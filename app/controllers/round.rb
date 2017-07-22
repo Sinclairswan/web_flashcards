@@ -8,6 +8,7 @@ post '/rounds' do
   if current_user
     @round.user_id = current_user.id
   end
+  @round.user_id = current_user.id if current_user
   @round.save
   session[:counter] = 0
   redirect "/round/#{@round.id}/guess"
@@ -18,6 +19,14 @@ get '/round/:round_id/guess' do
   @guess_array = @round.guesses
   erb :'rounds/show'
 end
+
+
+# Putting loop problem from erb here so we can figure out what to do. maybe include this in post???
+  # <!-- <% until guess.success == false %>
+  # <% session[:counter] += 1 %>
+  
+# <% end %>
+# <% guess = @guess_array[session[:counter]] %> -->
 
 post '/round/:round_id/guess' do
   @round = Round.find(params[:round_id])
@@ -48,7 +57,7 @@ end
 
 get '/round/:round_id' do
   # Create variable equal to results from specific round
-  "shows user result from specific round"
+  'shows user result from specific round'
   # IF THERES NO SESSION ID IT DESTROYS instance of round
   # User first variable made to show to guest
 end
