@@ -3,8 +3,14 @@
 
 <h2><%= @card.question %></h2>
 
+<<<<<<< HEAD
+<% if @correct == false  %>
+
+<form method="post" action="/card/<%=@card.deck_id%>/<%=@card.id%>">
+=======
 <% if @correct == false %>
 <form id = "submit_1" method="post" action="/card/<%=@card.deck_id%>/<%=@card.id%>">
+>>>>>>> team-girlpower
 <label for= "answer">Submit your answer:</label>
 <br>
 <br>
@@ -19,7 +25,12 @@
 
 
 <% else %>
+<<<<<<< HEAD
+
+<form method="post" action="/card/<%=@card.deck_id%>/<%=@card.id + 1%>">
+=======
 <form id = "submit_2" method="post" action="/card/<%=@card.deck_id%>/<%=@card.id + 1%>">
+>>>>>>> team-girlpower
 <label for= "answer">Submit your answer:</label>
 <br>
 <br>
