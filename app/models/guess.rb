@@ -1,5 +1,5 @@
 class Guess < ApplicationRecord
   belongs_to :round
-  belongs_to :user, through: :round
+  has_many :users, through: :round
   # Remember to create a migration!
 end

@@ -74,3 +74,4 @@ card_6_for_deck_2 = {
 }
 
 card_6 = Card.create(card_6_for_deck_2)
+
