@@ -36,15 +36,23 @@
           <div id="navbar" class="collapse navbar-collapse">
 
             <ul class="nav navbar-nav">
-              <li class="active"><a href="/">Home</a></li>
-              <li><a href="/card_display">Card Display</a></li>
+            <li class="active"><a href="/">Home</a></li>
+              <% if current_user %>
               <li><a href="/stats">Stats</a></li>
               <li><a href="/profile">MyProfile</a></li>
+              <% else %>
+              <li><a href="/card_display">Card Display</a></li>
               <li><a href="/new">Register</a></li>
               <li><a href="/login">Login</a></li>
-            </ul>
+              <% end %>
 
-            <form class="navbar-form navbar-right">
+            </ul>
+            <% if current_user %>
+             <form class="navbar-form navbar-right" method="post" action="/logout">
+              <button type="submit" class="btn btn-success">Logout</button>
+            </form>
+             <% else %>
+            <form class="navbar-form navbar-right" method="post" action="/login">
               <div class="form-group">
                 <input type="text" placeholder="Email" class="form-control">
               </div>
@@ -55,7 +63,7 @@
             </form>
 
           </div><!--/.nav-collapse -->
-
+          <% end %>
         </div>
 
       </nav>
