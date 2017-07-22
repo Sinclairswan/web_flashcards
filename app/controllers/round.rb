@@ -27,20 +27,24 @@ end
 
 post '/round/:round_id/guess' do
   @round = Round.find(params[:round_id])
-  @guess_array = @round.guesses
+  # Strict reorder
+  @guess_array = @round.guesses.order(:id)
   @card = Card.find(@guess_array[session[:counter]].card_id)
   if params[:answer] == @card.answer
     @guess_array[session[:counter]].success = true
     @guess_array[session[:counter]].save
+    # Strict Reorder
+    @guess_array = @guess_array.order(:id)
   end
-  session[:counter] += 1
-  if @guess_array.exists?(success: false)
-    session[:counter] = 0 if session[:counter] >= @round.guesses.count
-    redirect "/round/#{@round.id}/guess"
-  else
-    redirect "/round/#{@round.id}"
-  end
+session[:counter] += 1
+if @guess_array.exists?(success: false)
+  session[:counter] = 0 if session[:counter] >= @round.guesses.count
+  redirect "/round/#{@round.id}/guess"
+else
+  redirect "/round/#{@round.id}"
 end
+end
+
 
 # THE BIG CHECKER
 # Add on current guess counter
