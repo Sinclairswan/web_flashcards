@@ -9,6 +9,7 @@ if current_user
   #   redirect '/login'
   # end
 else
+  @error = "Please log in!"
   erb :'/login'
 end
   #start at card.id where first instance of deck_id
@@ -44,7 +45,7 @@ post '/card/:deck_id/:card_id' do
     wrong_guess << 1
     @correct = false
     # params[:card_id]
-
+    @errors = "Oh butterflies! Try again!"
     erb :'/card'
   else @user_answer = nil
     # next_card = @cards[position]
