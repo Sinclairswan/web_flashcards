@@ -11,12 +11,13 @@
     <th>Flashcard Decks</th>
     <th>Status</th>
   </tr>
-  <% @decks.each do |deck| %>
-  <tr>
+  <% @decks.select do |deck| %>
+    <% if deck.id <= 50 %>
     <td>ID<%= deck.id %></td>
-    <td><%= deck.name %></td>
+    <td><a href='/deck/<%=deck.id%>'><%= deck.name %></td>
     <td><%#= deck.status %><span class="glyphicon glyphicon-play-circle"></span></td>
   </tr>
+  <% end %>
   <% end %>
 </table>
 
