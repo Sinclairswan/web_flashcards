@@ -3,15 +3,13 @@
 <!-- if already answered, will move to guess_id +1 -->
 <!-- if not answered, will show question -->
 
-
 <% guess = @guess_array[session[:counter]] %>
-
-
+<% until guess.success == false %>
+  <% session[:counter] += 1 %>
+<% end %>
+<% guess = @guess_array[session[:counter]] %>
 <form id="card_display" action="/round/<%= @round.id %>/guess" method="post">
-  <% card = Card.find(guess.card_id) %>
-  <p> <%= guess.card_id %> </p>
-    <p> <%= session[:counter] %> </p>
-    <p> <%= card.question %> </p>
+  <%= guess.card.question %>
   <input type="text" name="answer" placeholder="Enter your guess...">
   <input type="submit" value="Check My Guess">
 </form>
