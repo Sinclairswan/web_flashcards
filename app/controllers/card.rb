@@ -1,5 +1,5 @@
 get '/card/:deck_id' do
-
+if current_user
   # @position = 0
   @cards = Card.where(deck_id: params[:deck_id])
   @card = Card.where(deck_id: params[:deck_id]).first
@@ -8,7 +8,9 @@ get '/card/:deck_id' do
   # else
   #   redirect '/login'
   # end
-
+else
+  erb :'/login'
+end
   #start at card.id where first instance of deck_id
 end
 #
