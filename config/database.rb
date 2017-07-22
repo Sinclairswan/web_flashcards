@@ -2,7 +2,7 @@
 if Sinatra::Application.development?
   ActiveRecord::Base.logger = Logger.new(STDOUT)
 end
-
+# To fix master
 # Automatically load every file in APP_ROOT/app/models/*.rb, e.g.,
 #   autoload "Person", 'app/models/person.rb'
 #
