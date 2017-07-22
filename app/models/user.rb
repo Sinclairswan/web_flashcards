@@ -6,27 +6,27 @@ class User < ApplicationRecord
   include BCrypt
 
   def full_name
-   "#{self.first_name} #{self.last_name}"
- end
+    "#{self.first_name} #{self.last_name}"
+  end
 
- def password
-  @password ||= Password.new(encrypted_password)
- end
+  def password
+    @password ||= Password.new(encrypted_password)
+  end
 
- def password=(new_password)
+  def password=(new_password)
     if new_password.length > 2
       self.encrypted_password = Password.create(new_password)
     else
-      self.errors[:base] << "Password must be greater than 2 characters."
+      self.errors[:base] << 'Password must be greater than 2 characters.'
     end
   end
 
- # Authenticate method included in model object for easier authentication
- def authenticate(email, password)
-   if self.email == email && self.password == password
-     true
-   else
-     puts 'wrong password'
-   end
- end
+  # Authenticate method included in model object for easier authentication
+  def authenticate(email, password)
+    if self.email == email && self.password == password
+      true
+    else
+      puts 'wrong password'
+    end
+  end
 end

@@ -5,9 +5,7 @@ post '/rounds' do
   @deck.cards.each do |card|
     Guess.create(card_id: card.id, round_id: @round.id)
   end
-  if current_user
-    @round.user_id = current_user.id
-  end
+  @round.user_id = current_user.id if current_user
   @round.save
   session[:counter] = 0
   redirect "/round/#{@round.id}/guess"
@@ -42,11 +40,11 @@ post '/round/:round_id/guess' do
   # redirects to '/round/:round_id'
   # else
   redirects to "/round/#{@round.id}/guess"
-  end
+end
 
 get '/round/:round_id' do
   # Create variable equal to results from specific round
-  "shows user result from specific round"
+  'shows user result from specific round'
   # IF THERES NO SESSION ID IT DESTROYS instance of round
   # User first variable made to show to guest
 end

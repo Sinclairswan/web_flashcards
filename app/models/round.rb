@@ -7,9 +7,7 @@ class Round < ApplicationRecord
   def first_try_guesses
     guesses = 0
     self.guesses.each do |guess|
-      if guess.count == 1
-        guesses += 1
-      end
+      guesses += 1 if guess.count == 1
     end
     guesses
   end
@@ -21,5 +19,4 @@ class Round < ApplicationRecord
     end
     guesses
   end
-
 end
