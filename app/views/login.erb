@@ -1,6 +1,6 @@
 <h1>Login:</h1>
 <% if @error %>
-  <p style="color: black"><%= @error %></p>
+  <p style="color: #fef200"><%= @error %></p>
   <% end  %>
 <form id="login" action="/login" method="post">
     Email:<br>
@@ -11,5 +11,5 @@
     <br><br>
 <!--     <input style="color: blue" type="submit" value="Login"> -->
 </form>
-
+ <!-- using a button to submit -->
 <button style = "color: #504BA5" type="submit" form="login" value="Log In" class = "sparkley">Submit</button>
