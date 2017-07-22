@@ -1,0 +1,7 @@
+<div class="container">
+<h1><%= @deck.name %></h1>
+<% @deck.cards.each do |card|%>
+
+<p><%= card.question %></p>
+<% end %>
+</div>
