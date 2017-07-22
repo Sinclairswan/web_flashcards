@@ -43,9 +43,14 @@ get '/profile' do
 end
 
 get '/stats' do
-  @stat_round = Round.where(user_id: current_user.id).last
-  @guess = @stat_round.guesses
-  erb :stats
+  if current_user
+    @stat_round = Round.where(user_id: current_user.id).last
+    @guess = @stat_round.guesses
+    erb :stats
+  else
+    redirect '/'
+  end
+
 end
 
 
