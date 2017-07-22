@@ -2,8 +2,8 @@
 <main role="main">
   <ul class="entries-list no-bullets no-padding">
     <% @decks.each do |deck| %>
-    <li class="entry-item pad-b-4">
-      <a href="/card/<%= deck.id %>" class="entry-title font-2 pad-b-1-4 c-white"><%= deck.title %></a>
+    <li class="sparkley">
+      <a href="/card/<%= deck.id %>"><%= deck.title %></a>
     </li>
     <% end %>
 
