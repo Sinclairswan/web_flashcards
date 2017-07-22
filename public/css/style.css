@@ -4,11 +4,11 @@ body {
 
 .main-section {
   margin: 70px 20px 20px 0;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
 }
 
 .sub-section {
-  border: 1px solid black;
+  /*border: 1px solid black;*/
   width: 70%;
   margin: auto;
 }
@@ -18,7 +18,7 @@ body {
 }
 
 .table {
-   border: 2px solid gray;
+   /*border: 2px solid gray;*/
    box-shadow: 10px 10px 5px #888888;
 }
 
