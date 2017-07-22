@@ -19,6 +19,14 @@ get '/round/:round_id/guess' do
   erb :'rounds/show'
 end
 
+
+# Putting loop problem from erb here so we can figure out what to do. maybe include this in post???
+  # <!-- <% until guess.success == false %>
+  # <% session[:counter] += 1 %>
+  
+# <% end %>
+# <% guess = @guess_array[session[:counter]] %> -->
+
 post '/round/:round_id/guess' do
   @round = Round.find(params[:round_id])
   @guess_array = @round.guesses
