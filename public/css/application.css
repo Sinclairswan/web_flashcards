@@ -1,3 +1,6 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,900|Montez);
+
+
 *, *:after, *:before {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -9,13 +12,15 @@
 html {
   height: 100%;
   background-color: #f30092;
-  background: url(../images/diamond-bg.jpg);
+  /*background: url(../images/diamond-bg.jpg);*/
   background-attachment: fixed;
   line-height: 1.4;
 }
 
+
 body {
   height: 100%;
+  font-family: Tahoma, Geneva, sans-serif
 }
 
 a {
@@ -24,14 +29,13 @@ a {
 }
 
   a:hover {
-    color: #ee4a25;
+    color: pink;
     text-decoration: underline;
   }
 
 input[type=text], input[type=password], textarea {
-  color: #05724f;
+  color: #504ba5;
 }
-
 
 /* positioning */
 .block {
@@ -71,12 +75,12 @@ input[type=text], input[type=password], textarea {
   text-decoration: none;
 }
 
-  .button:hover {
+/*  .button:hover {
     color: white;
     text-decoration: none;
     background-color: #6ec7a5;
   }
-
+*/
 .c-dk-green {
   color: #05724f;
 }
@@ -250,7 +254,7 @@ input[type=text], input[type=password], textarea {
 }
 
 .t-light-green {
-  color: #32bb7d;
+  color: #f30092;
 }
 
 .text-c {
@@ -284,10 +288,40 @@ input[type=text], input[type=password], textarea {
 }
 
 .logo {
-  width: 280px;
+  width: 200px;
   border-radius: 50%;
 }
 
 table, th, td {
-  border: 2px solid black;
+  border: 2px solid white;
 }
+
+
+$buttonBackground: #2c3e50;
+$buttonColor: rgba(255,255,255,;
+
+.sparkley {
+
+  background: lighten( $buttonBackground , 10% );
+  color: $buttonColor;
+  border: none;
+
+  padding: 16px 36px;
+  font-weight: normal;
+
+  border-radius: 3px;
+  transition: all 0.25s ease;
+
+  box-shadow: 0 38px 32px -23px black;
+  margin: 0 1em 1em;
+
+  &:hover {
+
+    background: $buttonBackground;
+    color: transparentize( $buttonColor,0.8 );
+  }
+
+}
+
+
+

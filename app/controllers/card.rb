@@ -5,6 +5,7 @@ if current_user
   @round = Round.create(user_id: @user.id, deck_id: params[:deck_id])
   erb :'/card'
 else
+  @error = "Please log in!"
   erb :'/login'
 end
 end
@@ -28,17 +29,17 @@ post '/card/:deck_id/:card_id' do
     @correct = true
     erb :'/stats' if @round.game_finished(@card, @deck)
     erb :'/card'
-
   elsif @user_answer != @card.answer
     @correct = false
     erb :'/stats' if @round.game_finished(@card, @deck)
+    @errors = "Oh butterflies! Try again!"
     erb :'/card'
   else @user_answer = nil
     @correct = true
     erb :'/stats' if @round.game_finished(@card, @deck)
     erb :'/card'
-
   end
+
 end
 
 

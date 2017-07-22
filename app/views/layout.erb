@@ -14,15 +14,15 @@
   <div class="max-w-700 center wrap-float">
       <nav class="clearfix mar-b-1">
        <ul class="no-bullets no-margin no-padding right">
-        <h1 style="color: pink">Flashcard Club!</h1>
+        <h1 style="color: pink; font-size: 40px" >Flashcard Club!</h1>
           <% if current_user %>
-          <li class="pipe-separate t-light-green left" style="color: green"> <%= current_user.name.downcase %> </li>
-          <li class="pipe-separate t-light-green left"><a href="/logout">logout</a></li>
-          <li class="pipe-separate t-light-green left"><a href="/">home</a></li>
+          <li class="pipe-separate t-light-green left sparkley"><a href= "/profile"><%= current_user.name.downcase %> </li>
+          <li class="pipe-separate t-light-green left sparkley"><a href="/logout">logout</a></li>
+          <li class="pipe-separate t-light-green left sparkley"><a href="/">home</a></li>
           <% else %>
-          <li class="pipe-separate t-light-green left"><a href="/">home</a></li>
-          <li class="pipe-separate t-light-green left"><a href="/login">login</a></li>
-          <li class="pipe-separate t-light-green left"><a href="/register">register</a>
+          <li class="pipe-separate t-light-green left sparkley"><a href="/">home</a></li>
+          <li class="pipe-separate t-light-green left sparkley"><a href="/login">login</a></li>
+          <li class="pipe-separate t-light-green left sparkley"><a href="/register">register</a>
           <% end %>
         </ul>
       </nav>

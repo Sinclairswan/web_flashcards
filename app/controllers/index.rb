@@ -42,6 +42,17 @@ get '/profile' do
   end
 end
 
+get '/stats' do
+  if current_user
+    @stat_round = Round.where(user_id: current_user.id).last
+    @guess = @stat_round.guesses
+    erb :stats
+  else
+    redirect '/'
+  end
+
+end
+
 
 get '/logout' do
   session.delete(:user_id)
